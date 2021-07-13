@@ -32,6 +32,9 @@ ruleTester.run('anchor-has-content', rule, {
     { code: '<a>{foo.bar}</a>' },
     { code: '<a dangerouslySetInnerHTML={{ __html: "foo" }} />' },
     { code: '<a children={children} />' },
+    { code: '<a title={title} />' },
+    { code: '<a aria-label={ariaLabel} />' },
+    { code: '<a title={title} aria-label={ariaLabel} />' },
   ].map(parserOptionsMapper),
   invalid: [
     { code: '<a />', errors: [expectedError] },

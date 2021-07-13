@@ -7,7 +7,7 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { elementType } from 'jsx-ast-utils';
+import { elementType, hasAnyProp } from 'jsx-ast-utils';
 import { arraySchema, generateObjSchema } from '../util/schemas';
 import hasAccessibleChild from '../util/hasAccessibleChild';
 
@@ -35,6 +35,9 @@ module.exports = {
         return;
       }
       if (hasAccessibleChild(node.parent)) {
+        return;
+      }
+      if (hasAnyProp(node.attributes, ['title', 'aria-label'])) {
         return;
       }
 
